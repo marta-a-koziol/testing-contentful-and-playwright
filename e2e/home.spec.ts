@@ -5,6 +5,10 @@ test.beforeEach(async ({ page, baseURL }) => {
   await page.goto(baseURL || 'http://localhost:3000');
 });
 
+test.beforeAll(async ({ browserName }, workerInfo) => {
+  console.log(`Running ${browserName} in worker #${workerInfo.workerIndex}`);
+});
+
 test.describe('Blog Homepage', () => {
   test('Should display correct h1 title', async ({page}) => {
     const h1 = await page.textContent('h1');
