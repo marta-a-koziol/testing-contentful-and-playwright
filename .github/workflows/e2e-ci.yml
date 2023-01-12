@@ -16,6 +16,12 @@ jobs:
         run: npm ci
       - name: Run build
         run: npm run build  
+      - name: Copy Test Output To Folder
+        working-directory: ./
+        run: |
+          mkdir .next
+          mv ./out/* .next/
+ 
       - name: install playwright browsers
         run: npx playwright install --with-deps
       - name: npm run test:e2e
