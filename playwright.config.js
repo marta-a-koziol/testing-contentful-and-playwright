@@ -13,16 +13,17 @@ const { devices } = require('@playwright/test');
  * @type {import('@playwright/test').PlaywrightTestConfig}
  */
 const config = {
+  
   webServer: {
     command: 'ls -a && npm run start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     // timeout: 5 * 60 * 1000,
     env: {
-      CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-      CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-      CONTENTFUL_PREVIEW_ACCESS_TOKEN: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-      CONTENTFUL_PREVIEW_SECRET: process.env.CONTENTFUL_PREVIEW_SECRET
+      CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || '',
+      CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+      CONTENTFUL_PREVIEW_ACCESS_TOKEN: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN || '',
+      CONTENTFUL_PREVIEW_SECRET: process.env.CONTENTFUL_PREVIEW_SECRET || ''
     }
   },
   testDir: './e2e',
