@@ -31,4 +31,10 @@ test.describe('Blog Homepage', () => {
     expect(h1).toBe('This is H2 in Authors');
   });
 
+  test('test uthor slug', async ({page},...rest) => {
+
+    await page.goto(`/posts/authors/name`);
+    const h1 = await page.textContent('h2');
+    expect(h1).toBe('This is H2 in Authors name');
+  });
 });
