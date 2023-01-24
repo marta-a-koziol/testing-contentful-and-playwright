@@ -73,3 +73,15 @@ jobs:
         env:
           PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--creative-babka-fecd82.netlify.app"
           DEBUG: pw:api
+
+      - name: Report Success Status
+        uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ job.status }}
+          notification_title: "Ui Static: {workflow} has {status_message}"
+          message_format: "{emoji} *{run_url}*"
+          footer: "Linked Repo <{repo_url}|{repo}>"
+          notify_when: "success"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
