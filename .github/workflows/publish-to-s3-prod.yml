@@ -79,9 +79,12 @@ jobs:
         if: always()
         with:
           status: ${{ job.status }}
-          notification_title: "Ui Static: {workflow} has {status_message}"
+          notification_title: "UI Static: Production deployment successful"
           message_format: "{emoji} *{run_url}*"
           footer: "Linked Repo <{repo_url}|{repo}>"
           notify_when: "success"
+          icon_success: ✅
+          
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
